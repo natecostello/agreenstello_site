@@ -67,3 +67,9 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# I think the following might be needed to prevent pulling the 
+# content repository into this repository:
+# gatsby-source-git
+content/*
+content/

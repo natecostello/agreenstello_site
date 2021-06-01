@@ -32,6 +32,17 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    // this plug-in had some legacy dependency issues:
+    // installed using --legacy-peer-deps
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `van_two_point_oh`,
+        remote: `https://github.com/natecostello/van_two_point_oh.git`,
+        branch: `master`,
+        local: `content`,
+      },
+    },
   ],
   pathPrefix: "/agreenstello_site",
 }
