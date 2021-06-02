@@ -43,6 +43,7 @@ module.exports = {
         local: `content`,
       },
     },
+    `gatsby-plugin-mdx`,
   ],
   pathPrefix: "/agreenstello_site",
 }
