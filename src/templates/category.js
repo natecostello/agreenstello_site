@@ -12,7 +12,6 @@ export default function CategoryPageTemplate({ data }) {
   )
 }
 
-
 export const query = graphql`
   query($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {

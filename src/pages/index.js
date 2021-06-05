@@ -32,7 +32,7 @@ export default function IndexPage({ data }) {
 
 export const query = graphql`
   {
-    mdx(frontmatter: { level: { eq: 0 } }) {
+    mdx(frontmatter: { type: { eq: "landingpage" } }) {
       id
       body
       frontmatter {
