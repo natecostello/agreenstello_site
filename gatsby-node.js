@@ -18,6 +18,9 @@ const query = `
         fields {
           slug
         }
+        frontmatter {
+          categories
+        }
       }
     }
   }
@@ -47,22 +50,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-// create category pages
+
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(query)
   if (result.errors) throw new Error(response.errors)
   const { categorypages, articles } = result.data
-
   const { createPage } = actions
 
   categorypages.edges.forEach(({ node }) => {
     const slug = node.fields.slug
+    const categories = node.frontmatter.categories
     console.log("creating page :" + slug)
+    console.log("page categories:" + categories)
     createPage({
       path: slug,
       component: categoryTemplate,
       context: {
         slug: slug,
+        categories: categories[0],
       },
     })
   })
