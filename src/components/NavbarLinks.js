@@ -21,10 +21,18 @@ const NavbarLinks = () => {
 
   return (
     <>
-    {categoryPages.edges.map(({ node }) => (
+      {categoryPages.edges.map(({ node }) => (
         // <Link to={slug}>{navTitle}</Link>
-        <Link to={"/" + node.slug}>{node.frontmatter.navTitle}</Link>
-    ))}
+        <Link
+          to={"/" + node.slug}
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}
+        >
+          {node.frontmatter.navTitle}{" "}
+        </Link>
+      ))}
     </>
   )
 }

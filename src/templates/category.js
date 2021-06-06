@@ -1,7 +1,7 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link, graphql } from "gatsby"
-import Navbar from "../components/Navbar"
+import Layout from "../components/layout"
 
 export default function CategoryPageTemplate({ data }) {
   const { mdx, articles, deprecatedArticles } = data
@@ -9,8 +9,7 @@ export default function CategoryPageTemplate({ data }) {
   //console.log("printing page context:")
   //console.log(JSON.stringify(pageContext))
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <h1>{mdx.frontmatter.title}</h1>
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <h1>Articles</h1>
@@ -37,7 +36,7 @@ export default function CategoryPageTemplate({ data }) {
           </Link>
         </div>
       ))}
-    </div>
+    </Layout>
   )
 }
 
