@@ -1,6 +1,7 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link, graphql } from "gatsby"
+import Navbar from "../components/Navbar"
 
 export default function CategoryPageTemplate({ data }) {
   const { mdx, articles, deprecatedArticles } = data
@@ -9,6 +10,7 @@ export default function CategoryPageTemplate({ data }) {
   //console.log(JSON.stringify(pageContext))
   return (
     <div>
+      <Navbar />
       <h1>{mdx.frontmatter.title}</h1>
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <h1>Articles</h1>
