@@ -3,7 +3,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link, graphql } from "gatsby"
 
 export default function CategoryPageTemplate({ data }) {
-  const { mdx, articles } = data
+  const { mdx, articles, deprecatedArticles } = data
   //const { articles } = data
   //console.log("printing page context:")
   //console.log(JSON.stringify(pageContext))
@@ -11,8 +11,20 @@ export default function CategoryPageTemplate({ data }) {
     <div>
       <h1>{mdx.frontmatter.title}</h1>
       <MDXRenderer>{mdx.body}</MDXRenderer>
-
+      <h1>Articles</h1>
       {articles.edges.map(({ node }) => (
+        <div key={node.id}>
+          <Link to={node.fields.slug}>
+            <h3>
+              {node.frontmatter.title}
+              {"  "}
+            </h3>
+            <p>{node.excerpt}</p>
+          </Link>
+        </div>
+      ))}
+      <h1>Deprecated Articles</h1>
+      {deprecatedArticles.edges.map(({ node }) => (
         <div key={node.id}>
           <Link to={node.fields.slug}>
             <h3>
@@ -39,7 +51,7 @@ export default function CategoryPageTemplate({ data }) {
 // `
 // future query
 export const query = graphql`
-  query($slug: String!, $categories: String!) {
+  query($slug: String!, $categories: [String!]) {
     mdx: mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
@@ -47,7 +59,34 @@ export const query = graphql`
       }
     }
     articles: allMdx(
-      filter: { frontmatter: { categories: { eq: $categories } } }
+      filter: {
+        frontmatter: {
+          type: { eq: "article" }
+          categories: { in: $categories }
+          metatags: { nin: ["deprecated"] }
+        }
+      }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+          excerpt
+        }
+      }
+    }
+    deprecatedArticles: allMdx(
+      filter: {
+        frontmatter: {
+          type: { eq: "article" }
+          categories: { in: $categories }
+          metatags: { in: ["deprecated"] }
+        }
+      }
     ) {
       edges {
         node {

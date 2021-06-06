@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: categoryTemplate,
       context: {
         slug: slug,
-        categories: categories[0],
+        categories: categories,
       },
     })
   })
