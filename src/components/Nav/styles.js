@@ -20,7 +20,8 @@ export const NavDiv = styled.nav`
   /* Mobile */
   ${mediaQueries.maxTablet} {
     box-sizing: border-box;
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--background-color);
+    color: var(--text-color);
     overscroll-behavior: none;
     z-index: 2;
     transform: translate(${props => (props.open ? `99%` : `0`)});
@@ -34,7 +35,7 @@ export const NavDiv = styled.nav`
     right: 100%;
     /* Needed to scroll past last element in case of overflow. */
     ::after {
-      content: '';
+      content: "";
       height: 0.5em;
     }
   }
