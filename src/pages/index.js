@@ -8,10 +8,19 @@ import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import PageTitle from "../components/PageTitle"
+import { PageBody } from "../components/styles"
+
 export default function IndexPage({ data }) {
   const { mdx } = data
   return (
-    <Layout>
+    <>
+      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageBody>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </PageBody>
+    </>
+    /*     <Layout>
       <Seo title="Home" />
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <StaticImage
@@ -26,7 +35,7 @@ export default function IndexPage({ data }) {
         <Link to="/page-2/">Go to page 2</Link> <br />
         <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
       </p>
-    </Layout>
+    </Layout> */
   )
 }
 

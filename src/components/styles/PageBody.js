@@ -28,5 +28,6 @@ export const PageBody = styled.main`
   img {
     display: block;
     margin: auto;
+    width: 100%;
   }
 `
