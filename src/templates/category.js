@@ -1,7 +1,9 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
+//import Layout from "../components/layout"
+import PageTitle from "../components/PageTitle"
+import { PageBody } from "../components/styles"
 
 export default function CategoryPageTemplate({ data }) {
   const { mdx, articles, deprecatedArticles } = data
@@ -9,34 +11,36 @@ export default function CategoryPageTemplate({ data }) {
   //console.log("printing page context:")
   //console.log(JSON.stringify(pageContext))
   return (
-    <Layout>
-      <h1>{mdx.frontmatter.title}</h1>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
-      <h1>Articles</h1>
-      {articles.edges.map(({ node }) => (
-        <div key={node.id}>
-          <Link to={node.fields.slug}>
-            <h3>
-              {node.frontmatter.title}
-              {"  "}
-            </h3>
-            <p>{node.excerpt}</p>
-          </Link>
-        </div>
-      ))}
-      <h1>Deprecated Articles</h1>
-      {deprecatedArticles.edges.map(({ node }) => (
-        <div key={node.id}>
-          <Link to={node.fields.slug}>
-            <h3>
-              {node.frontmatter.title}
-              {"  "}
-            </h3>
-            <p>{node.excerpt}</p>
-          </Link>
-        </div>
-      ))}
-    </Layout>
+    <>
+      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageBody>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+        <h1>Articles</h1>
+        {articles.edges.map(({ node }) => (
+          <div key={node.id}>
+            <Link to={node.fields.slug}>
+              <h3>
+                {node.frontmatter.title}
+                {"  "}
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
+          </div>
+        ))}
+        <h1>Deprecated Articles</h1>
+        {deprecatedArticles.edges.map(({ node }) => (
+          <div key={node.id}>
+            <Link to={node.fields.slug}>
+              <h3>
+                {node.frontmatter.title}
+                {"  "}
+              </h3>
+              <p>{node.excerpt}</p>
+            </Link>
+          </div>
+        ))}
+      </PageBody>
+    </>
   )
 }
 

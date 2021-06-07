@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `A Greenstello Site`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Van stuff and kiting.  Mostly van stuff, unfortunately`,
+    author: `GnarGnar and PowPow`,
+    url: `https://natecostello.github.io/agreenstello_site/`,
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
