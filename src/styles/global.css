@@ -2,9 +2,27 @@
   --background-color: #fff;
   --text-color: #000;
   --border-color: #00f;
+  --color-blue-light: #1f59cd;
+  --color-a: #d2ae00;
+  --color-b: #150956;
+  --color-c: #1f59cd;
+  --color-d: #ff7600;
+  --color-text: black;
+  --color-background: white;
+  --color-shadow: #e5e5e5;
+  --color-link: #1f59cd;
+  --color-lightLink: #279AF1;
+  --color-accentBackground: rgba(0, 0, 0, 0.05);
+  --color-gray: #464849;
+  --color-lightGray: #e5e5e5;
+  --color-darkGray: #1a1d23;
 }
-
-html {
+    
+/* html {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+
+a {
+    color: var(--color-blue-light);
+} */

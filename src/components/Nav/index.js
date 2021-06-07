@@ -15,7 +15,7 @@ export default function Nav(props) {
       }
     }
   `) */
-  const { categoryPages } = useStaticQuery(graphql`
+  const { categoryPages, blogPage } = useStaticQuery(graphql`
     {
       categoryPages: allMdx(
         filter: { frontmatter: { type: { eq: "categorypage" } } }
@@ -27,6 +27,14 @@ export default function Nav(props) {
               navTitle
             }
           }
+        }
+      }
+      blogPage: mdx(
+        frontmatter: { type: { eq: "sectionpage" }, section: { eq: "blog" } }
+      ) {
+        slug
+        frontmatter {
+          navTitle
         }
       }
     }
@@ -46,6 +54,9 @@ export default function Nav(props) {
         {...props}
       >
         <NavToggle open={open} onClick={() => setOpen(false)} />
+        <NavLink key={"/" + blogPage.slug} to={"/" + blogPage.slug}>
+          {blogPage.frontmatter.navTitle}
+        </NavLink>
         {categoryPages.edges.map(({ node }) => (
           <NavLink key={"/" + node.slug} to={"/" + node.slug}>
             {node.frontmatter.navTitle}

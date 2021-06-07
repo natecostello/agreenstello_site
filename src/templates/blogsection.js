@@ -5,8 +5,8 @@ import { Link, graphql } from "gatsby"
 import PageTitle from "../components/PageTitle"
 import { PageBody } from "../components/styles"
 
-export default function CategoryPageTemplate({ data }) {
-  const { mdx, articles, deprecatedArticles } = data
+export default function SectionPageTemplate({ data }) {
+  const { mdx, posts } = data
   //const { articles } = data
   //console.log("printing page context:")
   //console.log(JSON.stringify(pageContext))
@@ -15,8 +15,8 @@ export default function CategoryPageTemplate({ data }) {
       <PageTitle>{mdx.frontmatter.title}</PageTitle>
       <PageBody>
         <MDXRenderer>{mdx.body}</MDXRenderer>
-        <h1>Articles</h1>
-        {articles.edges.map(({ node }) => (
+        <h1>Blog Posts</h1>
+        {posts.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node.fields.slug}>
               <h3>
@@ -24,18 +24,7 @@ export default function CategoryPageTemplate({ data }) {
                 {"  "}
               </h3>
             </Link>
-            <p>{node.excerpt}</p>
-          </div>
-        ))}
-        <h1>Deprecated Articles</h1>
-        {deprecatedArticles.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link to={node.fields.slug}>
-              <h3>
-                {node.frontmatter.title}
-                {"  "}
-              </h3>
-            </Link>
+            <p>{node.frontmatter.date}</p>
             <p>{node.excerpt}</p>
           </div>
         ))}
@@ -56,19 +45,19 @@ export default function CategoryPageTemplate({ data }) {
 // `
 // future query
 export const query = graphql`
-  query($slug: String!, $categories: [String!]) {
-    mdx: mdx(fields: { slug: { eq: $slug } }) {
+  query($slug: String!, $section: String!) {
+    mdx: mdx(fields: { slug: { eq: $slug } }) 
+    {
       body
       frontmatter {
         title
       }
     }
-    articles: allMdx(
+    posts: allMdx(
       filter: {
         frontmatter: {
-          type: { eq: "article" }
-          categories: { in: $categories }
-          metatags: { nin: ["deprecated"] }
+          type: { eq: "post" }
+          section: { eq: $section }
         }
       }
     ) {
@@ -79,27 +68,7 @@ export const query = graphql`
           }
           frontmatter {
             title
-          }
-          excerpt
-        }
-      }
-    }
-    deprecatedArticles: allMdx(
-      filter: {
-        frontmatter: {
-          type: { eq: "article" }
-          categories: { in: $categories }
-          metatags: { in: ["deprecated"] }
-        }
-      }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
+            date
           }
           excerpt
         }

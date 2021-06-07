@@ -9,6 +9,10 @@ const path = require(`path`)
 
 const categoryTemplate = path.resolve(`./src/templates/category.js`)
 const articleTemplate = path.resolve(`./src/templates/article.js`)
+const sectionTemplate = path.resolve(`./src/templates/section.js`)
+const blogSectionTemplate = path.resolve(`./src/templates/blogsection.js`)
+const postTemplate = path.resolve(`./src/templates/post.js`)
+
 
 const query = `
 {
@@ -33,6 +37,27 @@ const query = `
       }
     }
   }
+  sectionpages: allMdx(filter: {frontmatter: {type: {eq: "sectionpage"}}}) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          section
+        }
+      }
+    }
+  }
+  posts: allMdx(filter: {frontmatter: {type: {eq: "post"}}}) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+      }
+    }
+  }
 }
 `
 
@@ -42,6 +67,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   //   if (node.internal.type === "Mdx" && node.frontmatter.level === 1) {
   if (node.internal.type === "Mdx") {
     const slug = createFilePath({ node, getNode, basePath: `content` })
+    console.log("Creating Node with slug: " + slug)
     createNodeField({
       node,
       name: `slug`,
@@ -54,13 +80,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(query)
   if (result.errors) throw new Error(response.errors)
-  const { categorypages, articles } = result.data
+  const { categorypages, articles, sectionpages, posts } = result.data
   const { createPage } = actions
 
   categorypages.edges.forEach(({ node }) => {
     const slug = node.fields.slug
     const categories = node.frontmatter.categories
-    console.log("creating page :" + slug)
+    console.log("creating category page :" + slug)
     console.log("page categories:" + categories)
     createPage({
       path: slug,
@@ -74,10 +100,48 @@ exports.createPages = async ({ graphql, actions }) => {
 
   articles.edges.forEach(({ node }) => {
     const slug = node.fields.slug
-    console.log("creating page :" + slug)
+    console.log("creating article page :" + slug)
     createPage({
       path: slug,
       component: articleTemplate,
+      context: {
+        slug: slug,
+      },
+    })
+  })
+
+  sectionpages.edges.forEach(({ node }) => {
+    const slug = node.fields.slug
+    const section = node.frontmatter.section
+    console.log("creating section page :" + slug)
+    
+    if (section === 'blog') {
+      createPage({
+        path: slug,
+        component: blogSectionTemplate,
+        context: {
+          slug: slug,
+          section: section,
+        },
+      })
+    } else {
+      createPage({
+        path: slug,
+        component: sectionTemplate,
+        context: {
+          slug: slug,
+          section: section,
+        },
+      })
+    }
+  })
+
+  posts.edges.forEach(({ node }) => {
+    const slug = node.fields.slug
+    console.log("creating page blog post :" + slug)
+    createPage({
+      path: slug,
+      component: postTemplate,
       context: {
         slug: slug,
       },

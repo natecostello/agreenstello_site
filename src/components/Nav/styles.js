@@ -20,8 +20,7 @@ export const NavDiv = styled.nav`
   /* Mobile */
   ${mediaQueries.maxTablet} {
     box-sizing: border-box;
-    background: var(--background-color);
-    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.9);
     overscroll-behavior: none;
     z-index: 2;
     transform: translate(${props => (props.open ? `99%` : `0`)});
@@ -53,6 +52,7 @@ export const NavToggle = styled(Cross).attrs(props => ({
   ${p =>
     !p.opener &&
     `position: absolute;
+    color: var(--color-lightGray);
     top: 0.7em;
     right: 0.5em;`}
   ${mediaQueries.minTablet} {
@@ -65,7 +65,7 @@ export const NavLink = styled(Link).attrs({
   partiallyActive: true,
 })`
   white-space: nowrap;
-  color: inherit;
+  color: var(--color-lightGray);
   transition: 0.3s;
   &.active {
     color: var(--color-a);
