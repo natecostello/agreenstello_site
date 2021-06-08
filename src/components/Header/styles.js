@@ -3,18 +3,18 @@ import styled from 'styled-components'
 import { mediaQueries } from "../../utils/mediaQueries"
 
 export const HeaderDiv = styled.header`
-  background: var(--background-color);
+  background: var(--color-b);
   position: sticky;
   top: 0;
   display: grid;
   grid-gap: calc(1em + 1vw);
   z-index: 3;
   padding: 1em;
-  color: var(--text-color);
+  color: white;
   font-size: 1.2em;
   grid-template-areas: 'nav title darkmode search';
   grid-template-columns: auto 1fr auto auto;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--color-a);
   ${mediaQueries.minTablet} {
     grid-template-areas: 'title nav darkmode search';
   }
