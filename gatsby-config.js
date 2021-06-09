@@ -68,9 +68,10 @@ module.exports = {
               // If you'd like to not use gatsby-remark-images and just copy your
               // original images to the public directory, set
               // `ignoreFileExtensions` to an empty array.
-              ignoreFileExtensions: [],
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`],
             },
           },
+          `gatsby-plugin-catch-links`,
         ],
       },
     },
