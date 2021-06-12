@@ -10,7 +10,7 @@ import { Link } from 'gatsby'
 export const NavDiv = styled.nav`
   font-size: 1.1em;
   display: grid;
-  grid-gap: calc(1em + 1vw);
+  grid-gap: calc(1em + 0.5vw);
   transition: 0.3s;
   /* Desktop */
   ${mediaQueries.minTablet} {

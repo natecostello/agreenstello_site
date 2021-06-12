@@ -5,7 +5,7 @@ const max = width => `only screen and (max-width: ${width}em)`
 export const screens = {
   phone: 30,
   phablet: 40,
-  tablet: 50,
+  tablet: 60,
   netbook: 60,
   laptop: 70,
   desktop: 100,

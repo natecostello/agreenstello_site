@@ -22,11 +22,11 @@ export default function IndexPage({ data }) {
   
   return (
     <>
-      <PageTitle img={image}>
+      <PageTitle img={image} css="min-height: 36em">
         <h1>{title}</h1>
       </PageTitle>
       <PageBody>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+        <MDXRenderer>{body}</MDXRenderer>
       </PageBody>
     </>
     /*     <Layout>
