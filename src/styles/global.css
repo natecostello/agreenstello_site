@@ -3,12 +3,16 @@
   --text-color: #000;
   --border-color: #00f;
   --color-blue-light: #1f59cd;
-  --color-a: #d2ae00;
-  --color-b: #150956;
+  /* --color-a: #d2ae00; */
+  --color-a: #686868;
+  /* --color-b: #150956; */
+  --color-b: #111111;
   --color-c: #1f59cd;
   --color-d: #ff7600;
-  --color-text: black;
-  --color-background: white;
+  /* --color-text: black; */
+  /* --color-background: white; */
+  --color-text: white;
+  --color-background: #181818;
   --color-shadow: #e5e5e5;
   --color-link: #1f59cd;
   --color-lightLink: #279AF1;

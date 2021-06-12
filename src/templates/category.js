@@ -5,13 +5,13 @@ import { Link, graphql } from "gatsby"
 import PageTitle from "../components/PageTitle"
 import { PageBody } from "../components/styles"
 
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 
 export default function CategoryPageTemplate({ data }) {
   const { mdx, articles, deprecatedArticles } = data
   const { frontmatter, body } = mdx
   const { title, cover } = frontmatter
-  const image = getImage(cover.img)
+  const image = getImage(cover?.img)
   //cover.src = cover?.img?.src
   //cover.alt = cover?.img?.alt
   //const { articles } = data
@@ -72,8 +72,8 @@ export const query = graphql`
         title
         cover {
           img {
-            childImageSharp{
-              gatsbyImageData
+            childImageSharp {
+              gatsbyImageData(transformOptions: { grayscale: true })
             }
           }
         }

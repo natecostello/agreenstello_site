@@ -5,16 +5,21 @@ import { Link, graphql } from "gatsby"
 import PageTitle from "../components/PageTitle"
 import { PageBody } from "../components/styles"
 
+import { getImage } from "gatsby-plugin-image"
+
 export default function SectionPageTemplate({ data }) {
   const { mdx, posts } = data
-  //const { articles } = data
-  //console.log("printing page context:")
-  //console.log(JSON.stringify(pageContext))
+  const { frontmatter, body } = mdx
+  const { title, cover } = frontmatter
+  const image = getImage(cover?.img)
+  
   return (
     <>
-      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageTitle img={image}>
+        <h1>{title}</h1>
+      </PageTitle>
       <PageBody>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+        <MDXRenderer>{body}</MDXRenderer>
         <h1>Blog Posts</h1>
         {posts.edges.map(({ node }) => (
           <div key={node.id}>
@@ -46,19 +51,22 @@ export default function SectionPageTemplate({ data }) {
 // future query
 export const query = graphql`
   query($slug: String!, $section: String!) {
-    mdx: mdx(fields: { slug: { eq: $slug } }) 
-    {
+    mdx: mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
         title
+        cover {
+          img {
+            childImageSharp {
+              gatsbyImageData(transformOptions: { grayscale: true })
+            }
+          }
+        }
       }
     }
     posts: allMdx(
       filter: {
-        frontmatter: {
-          type: { eq: "post" }
-          section: { eq: $section }
-        }
+        frontmatter: { type: { eq: "post" }, section: { eq: $section } }
       }
     ) {
       edges {

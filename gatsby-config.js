@@ -17,7 +17,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        placeholder: `tracedSVG`,
+      },
+    },
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -68,7 +73,15 @@ module.exports = {
               // If you'd like to not use gatsby-remark-images and just copy your
               // original images to the public directory, set
               // `ignoreFileExtensions` to an empty array.
-              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `md`, `mdx`],
+              ignoreFileExtensions: [
+                `png`,
+                `jpg`,
+                `jpeg`,
+                `bmp`,
+                `tiff`,
+                `md`,
+                `mdx`,
+              ],
             },
           },
           `gatsby-plugin-catch-links`,

@@ -12,7 +12,9 @@ export default function SectionPageTemplate({ data }) {
   //console.log(JSON.stringify(pageContext))
   return (
     <>
-      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageTitle>
+        <h1>{mdx.frontmatter.title}</h1>
+      </PageTitle>
       <PageBody>
         <MDXRenderer>{mdx.body}</MDXRenderer>
         <h1>Categories in this Section</h1>
@@ -20,8 +22,7 @@ export default function SectionPageTemplate({ data }) {
           <div key={node.id}>
             <Link to={node.fields.slug}>
               <h3>
-                Things related to{" "}
-                {node.frontmatter.categories}
+                Things related to {node.frontmatter.categories}
                 {"  "}
               </h3>
             </Link>

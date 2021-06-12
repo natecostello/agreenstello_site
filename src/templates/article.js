@@ -10,7 +10,9 @@ export default function ArticleTemplate({ data }) {
   const { mdx } = data
   return (
     <>
-      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageTitle>
+        <h1>{mdx.frontmatter.title}</h1>
+      </PageTitle>
       <PageBody>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </PageBody>
