@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import { GatsbyImage } from "gatsby-plugin-image"
+import styled from "styled-components"
 
 export const PageTitleDiv = styled.hgroup`
   position: relative;
-  background: var(--text-color);
-  color: var(--background-color);
+  color: white;
   /* Use flex instead of grid. Else Safari messes up vertical alignment of children. */
   display: flex;
   flex-direction: column;
@@ -25,3 +25,37 @@ export const PageTitleDiv = styled.hgroup`
     color: var(--color-lightLink);
   }
 `
+export const Image = styled(GatsbyImage)`
+  position: absolute !important;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+// export const Image = styled(GatsbyImage)`
+//   position: absolute !important;
+//   z-index: -1;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// `
+
+
+// export const Img = styled(GatsbyImage).attrs(
+//   p => !p.fullWidth && p.src && { as: `img`, src: p.dataURI || p.src }
+// )`
+//   position: absolute !important;
+//   z-index: -1;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// `
+// export const Img = styled(Image).attrs(
+//   p => !p.fluid && p.src && { as: `img`, src: p.dataURI || p.src }
+// )`
+//   position: absolute !important;
+//   z-index: -1;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// `

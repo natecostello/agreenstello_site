@@ -5,16 +5,25 @@ import { Link, graphql } from "gatsby"
 import PageTitle from "../components/PageTitle"
 import { PageBody } from "../components/styles"
 
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 export default function CategoryPageTemplate({ data }) {
   const { mdx, articles, deprecatedArticles } = data
+  const { frontmatter, body } = mdx
+  const { title, cover } = frontmatter
+  const image = getImage(cover.img)
+  //cover.src = cover?.img?.src
+  //cover.alt = cover?.img?.alt
   //const { articles } = data
   //console.log("printing page context:")
   //console.log(JSON.stringify(pageContext))
   return (
     <>
-      <PageTitle>{mdx.frontmatter.title}</PageTitle>
+      <PageTitle img={image}>
+        <h1>{title}</h1>
+      </PageTitle>
       <PageBody>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+        <MDXRenderer>{body}</MDXRenderer>
         <h1>Articles</h1>
         {articles.edges.map(({ node }) => (
           <div key={node.id}>
@@ -61,6 +70,13 @@ export const query = graphql`
       body
       frontmatter {
         title
+        cover {
+          img {
+            childImageSharp{
+              gatsbyImageData
+            }
+          }
+        }
       }
     }
     articles: allMdx(
