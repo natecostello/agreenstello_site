@@ -1,4 +1,4 @@
-//import 'katex/dist/katex.min.css'
+import 'katex/dist/katex.min.css'
 import { createGlobalStyle } from 'styled-components'
 import { mediaQueries, screens } from "../../utils/mediaQueries"
 import { typography } from "../../utils/constants"

@@ -85,6 +85,13 @@ module.exports = {
             },
           },
           `gatsby-plugin-catch-links`,
+          {
+            resolve: `gatsby-remark-katex`,
+            // options: { macros, throwOnError: false }, Janosh options
+            options: {
+              strict: `ignore`
+            }
+          },
         ],
       },
     },
