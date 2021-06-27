@@ -68,6 +68,7 @@ export const query = graphql`
       filter: {
         frontmatter: { type: { eq: "post" }, section: { eq: $section } }
       }
+      sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {
         node {
