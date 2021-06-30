@@ -1,0 +1,16 @@
+name: Gatsby Publish
+
+on:
+  repository_dispatch:
+    types: [content-push] 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: master
+          gatsby-args: --prefix-paths #&& gh-pages -d public -b master (if using this action the gh-pages plugin and args are not required)
