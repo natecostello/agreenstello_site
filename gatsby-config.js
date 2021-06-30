@@ -57,6 +57,12 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: "Monokai Dimmed", // Or install your favorite theme from GitHub
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
@@ -89,8 +95,8 @@ module.exports = {
             resolve: `gatsby-remark-katex`,
             // options: { macros, throwOnError: false }, Janosh options
             options: {
-              strict: `ignore`
-            }
+              strict: `ignore`,
+            },
           },
         ],
       },
