@@ -115,12 +115,7 @@ module.exports = {
               iframeId: false, //Optional: if true, iframe's id will be set to what is provided after 'video:' (YouTube IFrame player API requires iframe id)
             },
           },
-          {
-            resolve: `gatsby-transformer-remark`,
-            options: {
-              plugins: [`gatsby-remark-responsive-iframe`],
-            },
-          },
+          `gatsby-remark-responsive-iframe`,
         ],
       },
     },
