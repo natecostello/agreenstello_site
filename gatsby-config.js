@@ -19,10 +19,9 @@ module.exports = {
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
-      options: {
-      },
+      options: {},
     },
-    "gatsby-remark-embed-video",
+    "gatsby-remark-embed-video", //Not sure if this is needed here or if only under remark options
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -114,6 +113,12 @@ module.exports = {
               ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
               containerClass: "embedVideo-container", //Optional: Custom CSS class for iframe container, for multiple classes separate them by space
               iframeId: false, //Optional: if true, iframe's id will be set to what is provided after 'video:' (YouTube IFrame player API requires iframe id)
+            },
+          },
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [`gatsby-remark-responsive-iframe`],
             },
           },
         ],
