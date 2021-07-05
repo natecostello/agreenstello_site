@@ -20,7 +20,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        placeholder: `tracedSVG`,
       },
     },
     "gatsby-remark-embed-video",
