@@ -121,5 +121,5 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
   ],
-  pathPrefix: "/agreenstello_site",
+  // pathPrefix: "/agreenstello_site",
 }
