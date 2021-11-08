@@ -13,12 +13,12 @@ export const NavDiv = styled.nav`
   grid-gap: calc(1em + 0.5vw);
   transition: 0.3s;
   /* Desktop */
-  ${mediaQueries.minTablet} {
+  ${mediaQueries.minLaptop} {
     grid-auto-flow: column;
     justify-self: start;
   }
   /* Mobile */
-  ${mediaQueries.maxTablet} {
+  ${mediaQueries.maxLaptop} {
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.9);
     overscroll-behavior: none;
@@ -55,7 +55,7 @@ export const NavToggle = styled(Cross).attrs(props => ({
     color: var(--color-lightGray);
     top: 0.7em;
     right: 0.5em;`}
-  ${mediaQueries.minTablet} {
+  ${mediaQueries.minLaptop} {
     display: none;
   }
 `
