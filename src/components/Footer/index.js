@@ -1,4 +1,4 @@
-// import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 // import { FooterDiv, PoweredBy, Icons } from "./styles"
 import { FooterDiv } from "./styles"
@@ -18,10 +18,29 @@ export default function Footer() {
       }
     }
   `) */
+  const data = useStaticQuery(graphql`
+    {
+      currentBuildDate {
+        currentDate
+      }
+    }
+  `)
 //  const { copyright, sourceNote, poweredBy } = contentYaml
   return (
-    <FooterDiv>Footer
-     {/*  <span>
+    <FooterDiv>
+      A work very much in progress. Statically built{" "}
+      {data.currentBuildDate.currentDate}
+      {" "}
+      according to
+      {" "}
+      <a href="https://github.com/natecostello/agreenstello_site">this code</a>
+      {" "}
+      and
+      {" "}
+       <a href="https://github.com/natecostello/van_two_point_oh">this content</a>
+      {" "}
+      .
+      {/*  <span>
         © {new Date().getFullYear()} - {copyright}
         &emsp; <Rss />
       </span>

@@ -9,7 +9,7 @@ export const FooterDiv = styled.footer`
   a {
     color: var(--color-lightLink);
   }
-  display: grid;
+  /* display: grid;
   place-items: center;
   grid-template-areas:
     'copyright'
@@ -23,7 +23,7 @@ export const FooterDiv = styled.footer`
   }
   ${mediaQueries.minTablet} {
     grid-template-areas: 'copyright source poweredBy';
-  }
+  } */
 `
 
 export const PoweredBy = styled.div`
