@@ -20,8 +20,8 @@ export default function Footer() {
   `) */
   const data = useStaticQuery(graphql`
     {
-      currentBuildDate {
-        currentDate
+      site {
+        buildTimeZone
       }
     }
   `)
@@ -29,7 +29,7 @@ export default function Footer() {
   return (
     <FooterDiv>
       A work very much in progress. Statically built{" "}
-      {data.currentBuildDate.currentDate}
+      {data.site.buildTimeZone}
       {" "}
       according to
       {" "}
