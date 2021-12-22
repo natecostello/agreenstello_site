@@ -136,6 +136,7 @@ module.exports = {
         format: "HH:mm:ss, ddd, MMM DD, YYYY",
       },
     },
+    `gatsby-plugin-instagram-embed`,
   ],
   // pathPrefix: "/agreenstello_site",
 }
