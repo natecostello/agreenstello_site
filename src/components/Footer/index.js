@@ -28,7 +28,7 @@ export default function Footer() {
 //  const { copyright, sourceNote, poweredBy } = contentYaml
   return (
     <FooterDiv>
-      A work very much in progress. Statically built{" "}
+      A work in progress. Statically built{" "}
       {data.site.buildTimeZone}
       {" "}
       according to
