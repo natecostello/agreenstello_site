@@ -54,13 +54,22 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        // Had to add this and comment out section under gatsbyRemarkPlugins to get site to builld with gatsby-remark-vscode
+        remarkPlugins: [
+          [
+            require("gatsby-remark-vscode").remarkPlugin,
+            {
+              theme: `Monokai Dimmed`,
+            },
+          ],
+        ],
         gatsbyRemarkPlugins: [
-          {
+          /* {
             resolve: `gatsby-remark-vscode`,
             options: {
               theme: "Monokai Dimmed", // Or install your favorite theme from GitHub
             },
-          },
+          }, */
           {
             resolve: `gatsby-remark-images`,
             options: {
