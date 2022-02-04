@@ -71,12 +71,6 @@ module.exports = {
             },
           }, */
           {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`,
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
@@ -105,13 +99,6 @@ module.exports = {
             },
           },
           `gatsby-plugin-catch-links`,
-          {
-            resolve: `gatsby-remark-katex`,
-            // options: { macros, throwOnError: false }, Janosh options
-            options: {
-              strict: `ignore`,
-            },
-          },
           {
             resolve: "gatsby-remark-embed-video",
             options: {
