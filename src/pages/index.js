@@ -58,7 +58,7 @@ export const query = graphql`
         cover {
           img {
             childImageSharp {
-              gatsbyImageData(transformOptions: { grayscale: true })
+              gatsbyImageData
             }
           }
         }
