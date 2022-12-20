@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const PageTitleDiv = styled.hgroup`
   position: relative;
-  color: white;
+  color: #FFFFFFDE;
   /* Use flex instead of grid. Else Safari messes up vertical alignment of children. */
   display: flex;
   flex-direction: column;
