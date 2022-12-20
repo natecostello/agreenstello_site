@@ -65,12 +65,12 @@ export const NavLink = styled(Link).attrs({
   partiallyActive: true,
 })`
   white-space: nowrap;
-  color: var(--color-lightGray);
+  color: var(--color-text);
   transition: 0.3s;
   &.active {
     color: var(--color-a);
   }
   :hover {
-    color: var(--color-blue-light);
+    color: var(--color-a);
   }
 `
