@@ -31,6 +31,7 @@ export const Image = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
 `
 // export const Image = styled(GatsbyImage)`
 //   position: absolute !important;
