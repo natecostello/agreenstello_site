@@ -10,7 +10,7 @@ export const HeaderDiv = styled.header`
   grid-gap: calc(1em + 1vw);
   z-index: 3;
   padding: 1em;
-  color: white;
+  color: var(--color-text);
   font-size: 1.2em;
   grid-template-areas: 'nav title darkmode search';
   grid-template-columns: auto 1fr auto auto;
