@@ -83,6 +83,14 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
+            cover
+            {
+              img {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
           }
           excerpt
           timeToRead

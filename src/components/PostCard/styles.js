@@ -22,10 +22,9 @@ export const Post = styled.article`
 
 export const Cover = styled(GatsbyImage)`
 //   height: calc(10em + 4vh);
-  position: absolute !important;
   z-index: -1;
   height: 100%
   width: 100%;
   object-fit: cover;
-  filter: brightness(0.8) contrast(1.1);
+  filter: brightness(0.3) contrast(1.1);
 `

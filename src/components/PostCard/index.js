@@ -15,19 +15,21 @@ export default function PostCard({ node }) {
     
     return (
         <Post>
-        
+            
+            <Cover image={image} />
+{/* 
         <Link to={slug}>
         <Cover image={image} />
         </Link>
-        
-        
-        
+         */}
+         <div>
         <h3 css="margin: 0.8em auto 0.5em;">
         <Link to={slug}>{title}</Link>
         </h3>
         
         <PostMeta title={title} slug={slug} date={date} timeToRead={timeToRead} />
         <h3>{excerpt}</h3>
+        </div>
         </Post>
         )
     }
