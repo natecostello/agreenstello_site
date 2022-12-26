@@ -14,7 +14,7 @@ export default function SectionPageTemplate({ data }) {
   const { frontmatter, body } = mdx
   const { title, cover } = frontmatter
   const image = getImage(cover?.img)
-  
+
   return (
     <>
       <PageTitle img={image}>
@@ -22,10 +22,9 @@ export default function SectionPageTemplate({ data }) {
       </PageTitle>
       <PageBody>
         <MDXRenderer>{body}</MDXRenderer>
-        <h1>Blog Posts</h1>
 
         <PostList posts={posts} />
-        
+        {/*  
         {posts.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node.fields.slug}>
@@ -38,6 +37,7 @@ export default function SectionPageTemplate({ data }) {
             <p>{node.excerpt}</p>
           </div>
         ))}
+         */}
       </PageBody>
     </>
   )
@@ -55,7 +55,7 @@ export default function SectionPageTemplate({ data }) {
 // `
 // future query
 export const query = graphql`
-  query($slug: String!, $section: String!) {
+  query ($slug: String!, $section: String!) {
     mdx: mdx(fields: { slug: { eq: $slug } }) {
       body
       frontmatter {
@@ -83,8 +83,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-            cover
-            {
+            cover {
               img {
                 childImageSharp {
                   gatsbyImageData

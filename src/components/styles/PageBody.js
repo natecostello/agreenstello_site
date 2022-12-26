@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const PageBody = styled.main`
   position: relative;
@@ -6,6 +6,7 @@ export const PageBody = styled.main`
   display: grid;
   grid-gap: 0 4vw;
   grid-template-columns: 1fr 1fr minmax(8em, 40em) 1fr 1fr;
+  //grid-template-columns: 1fr minmax(8em, 40em) 1fr;
   grid-auto-rows: max-content;
   grid-auto-flow: dense;
   > * {
