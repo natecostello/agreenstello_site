@@ -1,6 +1,6 @@
 
 
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 export const Post = styled.article`
@@ -20,10 +20,12 @@ export const Post = styled.article`
   }
 `
 
-export const Cover = styled(Img).attrs(
-  ({ fluid, src }) => !fluid && src && { as: `img` }
-)`
-  height: calc(10em + 4vh);
+export const Cover = styled(GatsbyImage)`
+//   height: calc(10em + 4vh);
+  position: absolute !important;
+  z-index: -1;
+  height: 100%
   width: 100%;
   object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
 `

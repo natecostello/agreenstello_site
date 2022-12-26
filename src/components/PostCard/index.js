@@ -2,20 +2,32 @@ import { Link } from 'gatsby'
 import React from 'react'
 import PostMeta from '../PostMeta'
 import { Cover, Post } from './styles'
+import { getImage } from "gatsby-plugin-image"
 
-export default function PostCard({ post, noText }) {
-  const { frontmatter, excerpt, timeToRead } = post
-  const { title, slug, cover } = frontmatter
-  return (
-    <Post>
-      <Link to={slug}>
-        <Cover {...cover} {...cover.img} />
-      </Link>
-      <h3 css="margin: 0.8em auto 0.5em;">
+// A post is a node associated with a blog post
+export default function PostCard({ node }) {
+    console.log(node)
+    const { fields, frontmatter, excerpt, timeToRead } = node
+    const { slug } = fields
+    //const slug = 'stub'
+    const { date, title, cover } = frontmatter
+    const image = getImage(cover?.img)
+    
+    return (
+        <Post>
+        
+        <Link to={slug}>
+        <Cover image={image} />
+        </Link>
+        
+        
+        
+        <h3 css="margin: 0.8em auto 0.5em;">
         <Link to={slug}>{title}</Link>
-      </h3>
-      <PostMeta {...{ ...frontmatter, timeToRead }} />
-      {!noText && <span dangerouslySetInnerHTML={{ __html: excerpt }} />}
-    </Post>
-  )
-}
+        </h3>
+        
+        <PostMeta title={title} slug={slug} date={date} timeToRead={timeToRead} />
+        <h3>{excerpt}</h3>
+        </Post>
+        )
+    }

@@ -7,6 +7,8 @@ import { PageBody } from "../components/styles"
 
 import { getImage } from "gatsby-plugin-image"
 
+import PostList from "../components/PostList"
+
 export default function SectionPageTemplate({ data }) {
   const { mdx, posts } = data
   const { frontmatter, body } = mdx
@@ -21,6 +23,9 @@ export default function SectionPageTemplate({ data }) {
       <PageBody>
         <MDXRenderer>{body}</MDXRenderer>
         <h1>Blog Posts</h1>
+
+        <PostList posts={posts} />
+        
         {posts.edges.map(({ node }) => (
           <div key={node.id}>
             <Link to={node.fields.slug}>
@@ -80,6 +85,7 @@ export const query = graphql`
             date(formatString: "MMMM DD, YYYY")
           }
           excerpt
+          timeToRead
         }
       }
     }
