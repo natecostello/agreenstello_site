@@ -13,7 +13,6 @@ const sectionTemplate = path.resolve(`./src/templates/section.js`)
 const blogSectionTemplate = path.resolve(`./src/templates/blogsection.js`)
 const postTemplate = path.resolve(`./src/templates/post.js`)
 
-
 const query = `
 {
   categorypages: allMdx(filter: {frontmatter: {type: {eq: "categorypage"}}}) {
@@ -74,8 +73,31 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
   }
-}
 
+  // Implementing excerpt separators per
+  // https://suhasdara.me/blogs/gatsby-mdx-excerpts
+
+  const fm = "---" //frontmatter
+  const end = "<!--excerpt-->" //excerpt separator
+  const prune = 200 //default prune length
+  if (node.internal.type === `Mdx`) {
+    let content = node.internal.content
+    let fmStart = content.indexOf(fm)
+    let fmEnd = content.indexOf(fm, fmStart + 1) + fm.length
+    let excerptEnd = content.indexOf(end)
+    let ellipsis = excerptEnd === -1 ? "..." : ""
+    excerptEnd =
+      excerptEnd === -1 ? Math.min(content.length, fmEnd + prune) : excerptEnd
+    let excerpt = content.substring(fmEnd, excerptEnd) + ellipsis
+    excerpt = excerpt.trim()
+
+    createNodeField({
+      node,
+      name: `excerpt`,
+      value: excerpt,
+    })
+  }
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(query)
@@ -114,8 +136,8 @@ exports.createPages = async ({ graphql, actions }) => {
     const slug = node.fields.slug
     const section = node.frontmatter.section
     console.log("creating section page :" + slug)
-    
-    if (section === 'blog') {
+
+    if (section === "blog") {
       createPage({
         path: slug,
         component: blogSectionTemplate,
