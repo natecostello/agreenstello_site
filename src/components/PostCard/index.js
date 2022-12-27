@@ -12,7 +12,7 @@ export default function PostCard({ node }) {
   const { fields, frontmatter, excerpt, timeToRead } = node
   const { slug } = fields
   //const slug = 'stub'
-  const { date, title, cover } = frontmatter
+  const { date, title, cover, tags } = frontmatter
   const image = getImage(cover?.img)
 
   return (
@@ -41,6 +41,7 @@ export default function PostCard({ node }) {
             title={title}
             slug={slug}
             date={date}
+            tags={tags}
             timeToRead={timeToRead}
           />
           <p>{excerpt}</p>

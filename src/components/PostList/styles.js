@@ -1,8 +1,7 @@
 // import styled, { css } from 'styled-components'
-import styled from 'styled-components'
-import { Grid } from '../styles'
-import { mediaQueries } from '../../utils/mediaQueries'
-
+import styled from "styled-components"
+import { Grid } from "../styles"
+import { mediaQueries } from "../../utils/mediaQueries"
 
 export const PostGrid = styled(Grid)`
   height: max-content;
@@ -11,6 +10,6 @@ export const PostGrid = styled(Grid)`
     justify-self: center;
   }
   ${mediaQueries.minPhablet} {
-    grid-column: 2/-3;
+    grid-column: 2/-2;
   }
 `
