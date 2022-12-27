@@ -76,6 +76,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   // Implementing excerpt separators per
   // https://suhasdara.me/blogs/gatsby-mdx-excerpts
+  // We aren't using this because it doen't handle markdown within
+  // the excerpt, but we are leaving it in for future possibilities.
 
   const fm = "---" //frontmatter
   const end = "<!--excerpt-->" //excerpt separator

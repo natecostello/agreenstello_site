@@ -1,6 +1,6 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 //import Layout from "../components/layout"
 import PageTitle from "../components/PageTitle"
 import { PageBody } from "../components/styles"
@@ -81,6 +81,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
+            tldr
             title
             date(formatString: "MMMM DD, YYYY")
             cover {
@@ -92,7 +93,6 @@ export const query = graphql`
             }
             tags
           }
-          excerpt
           timeToRead
         }
       }

@@ -1,18 +1,17 @@
 import { Link } from "gatsby"
 import React from "react"
 import PostMeta from "../PostMeta"
-import { Cover, Post } from "./styles"
+import { Post } from "./styles"
 import { getImage } from "gatsby-plugin-image"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { StaticImage } from "gatsby-plugin-image"
 
 // A post is a node associated with a blog post
 export default function PostCard({ node }) {
   console.log(node)
-  const { fields, frontmatter, excerpt, timeToRead } = node
+  const { fields, frontmatter, timeToRead } = node
   const { slug } = fields
   //const slug = 'stub'
-  const { date, title, cover, tags } = frontmatter
+  const { date, title, cover, tags, tldr } = frontmatter
   const image = getImage(cover?.img)
 
   return (
@@ -44,7 +43,7 @@ export default function PostCard({ node }) {
             tags={tags}
             timeToRead={timeToRead}
           />
-          <p>{excerpt}</p>
+          <p>{tldr}</p>
         </div>
         <GatsbyImage
           image={image}
