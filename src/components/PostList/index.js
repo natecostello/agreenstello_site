@@ -20,10 +20,18 @@ export default function PostList({ posts }) {
       ))
  */
 
+    <Masonry>
+      {posts.edges.map(({ node }) => (
+        <PostCard key={node.fields.slug} node={node} />
+      ))}
+    </Masonry>
+    /* 
     <PostGrid minWidth="17em" maxWidth="24em" gap="1.5em">
       {posts.edges.map(({ node }) => (
         <PostCard key={node.fields.slug} node={node} />
       ))}
     </PostGrid>
+
+ */
   )
 }
